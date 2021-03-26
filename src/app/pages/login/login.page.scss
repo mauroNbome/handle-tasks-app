@@ -1,0 +1,30 @@
+.logo-container {
+  height: 25rem;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7rem;
+    max-width: 265px;
+    max-height: 150px;
+  }
+}
+
+.credentials-container {
+  .label {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  ion-input {
+    border: 1px solid #000000;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .button-container {
+    margin-top: 2rem;
+  }
+}

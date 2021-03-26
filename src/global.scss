@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,27 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+* *::after,
+*::before {
+  padding: 0;
+  border: 0;
+  box-sizing: inherit;
+  /* WE'RE INHERITING THE BOXSIZING OF THE BODY BELOW. */
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.main-box {
+  padding: 0 4.44%;
+}
+
+ion-input {
+  font-size: 1.6rem;
+}
