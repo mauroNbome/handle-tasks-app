@@ -1,0 +1,7 @@
+{
+  "name": "mistica",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
