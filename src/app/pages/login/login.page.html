@@ -8,11 +8,21 @@
         <div class="label">Usuario</div>
         <ion-input></ion-input>
 
-        <div class="label">Password</div>
+        <div class="label" style="margin-top: 3rem">Password</div>
         <ion-input></ion-input>
 
-        <div class="button-container">
-          <ion-button expand="full">Login</ion-button>
+        <div class="rounded-button-container">
+          <ion-button expand="block" class="login-button">Login</ion-button>
+        </div>
+
+        <div class="password-forgot">¿Olvidaste tu contraseña?</div>
+
+        <div
+          class="password-forgot"
+          style="margin-top: 4rem"
+          routerLink="/registro"
+        >
+          Crear una cuenta
         </div>
       </div>
     </form>

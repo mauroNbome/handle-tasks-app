@@ -16,15 +16,38 @@
 .credentials-container {
   .label {
     font-size: 1.6rem;
+    font-weight: 500;
     margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
   }
   ion-input {
     border: 1px solid #000000;
     font-size: 1.6rem;
     margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+    border-radius: 1.5rem;
   }
 
-  .button-container {
-    margin-top: 2rem;
+  .rounded-button-container {
+    margin-top: 5rem;
+
+    ion-button {
+      height: 5rem;
+      --border-radius: 16px !important;
+    }
+  }
+
+  .password-forgot {
+    margin-top: 3rem;
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: 500;
+
+    &:focus {
+      outline: none;
+    }
   }
 }

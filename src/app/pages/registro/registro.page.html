@@ -1,0 +1,188 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-box">
+    <div class="titulo">Registro</div>
+    <form
+      autocomplete="off"
+      [formGroup]="formController"
+      (ngSubmit)="guardar()"
+    >
+      <div class="inner-form">
+        <div class="form-label">Nombre</div>
+        <ion-input
+          formControlName="nombre"
+          type="text"
+          autocomplete="new-password"
+        ></ion-input>
+
+        <small *ngIf="nombreNoValido" class="text-danger"
+          >Debes ingresar tu nombre</small
+        >
+
+        <div class="form-label">Apellido</div>
+        <ion-input
+          formControlName="apellido"
+          type="text"
+          autocomplete="new-password"
+        ></ion-input>
+
+        <small *ngIf="apellidoNoValido" class="text-danger"
+          >Debes ingresar tu apellido</small
+        >
+
+        <div class="form-label">E-mail</div>
+        <ion-input formControlName="email" type="email"></ion-input>
+
+        <small *ngIf="emailNoValido" class="text-danger"
+          >Debes ingresar un email válido</small
+        >
+
+        <div class="form-label">Confirmación E-mail</div>
+        <ion-input
+          formControlName="email2"
+          autocomplete="new-password"
+        ></ion-input>
+
+        <small *ngIf="email2NoValido" class="text-danger"
+          >Ambos emails deben coincidir</small
+        >
+
+        <div class="password-container">
+          <div class="form-label">Password</div>
+          <div class="eye-icon">
+            <i
+              (click)="fieldTextType= !fieldTextType"
+              class="fa fa-2x"
+              [ngClass]="{
+                'fa-eye-slash': !fieldTextType,
+                'fa-eye ': fieldTextType
+              }"
+            ></i>
+          </div>
+          <ion-input
+            formControlName="password"
+            [type]="fieldTextType ? 'text' : 'password'"
+            autocomplete="new-password"
+          ></ion-input>
+        </div>
+
+        <small *ngIf="passwordNoValido" class="text-danger"
+          >Ingrese una contraseña</small
+        >
+
+        <div class="form-label">Fecha de nacimiento</div>
+        <ion-input formControlName="fnac" type="date"></ion-input>
+
+        <small *ngIf="fnacNoValido" class="text-danger"
+          >Ingrese una fecha válida</small
+        >
+
+        <ion-radio-group formControlName="sexo">
+          <div class="form-label">Sexo</div>
+          <div style="display: flex">
+            <div class="radio-container">
+              <ion-radio value="masculino"></ion-radio>
+              <div class="radio-label">Masculino</div>
+            </div>
+            <div class="radio-container">
+              <ion-radio value="femenino"></ion-radio>
+              <div class="radio-label">Femenino</div>
+            </div>
+          </div>
+        </ion-radio-group>
+
+        <div class="form-label">Nacionalidad</div>
+        <ion-select formControlName="nacionalidad" interface="popover">
+          <ng-container *ngFor="let country of countries">
+            <ion-select-option value="{{ country.code }}"
+              >{{country.nombre}}</ion-select-option
+            >
+          </ng-container>
+        </ion-select>
+
+        <small *ngIf="nacionalidadNoValido" class="text-danger"
+          >Seleccione una opción</small
+        >
+
+        <ion-radio-group formControlName="docType">
+          <div class="form-label">Tipo de doc.</div>
+          <div style="display: flex; margin-bottom: 2rem">
+            <div class="radio-container">
+              <ion-radio value="dni"></ion-radio>
+              <div class="radio-label">DNI</div>
+            </div>
+
+            <div class="radio-container">
+              <ion-radio value="visa"></ion-radio>
+              <div class="radio-label">Visa</div>
+            </div>
+          </div>
+          <div style="display: flex">
+            <div class="radio-container">
+              <ion-radio value="pasaporte"></ion-radio>
+              <div class="radio-label">Pasaporte</div>
+            </div>
+
+            <div class="radio-container">
+              <ion-radio value="pasaporte_alternativo"></ion-radio>
+              <div class="radio-label">Pasaporte Alternativo</div>
+            </div>
+          </div>
+        </ion-radio-group>
+
+        <div class="form-label" *ngIf="formController.value.docType === 'dni'">
+          Nro documento
+        </div>
+
+        <div class="form-label" *ngIf="formController.value.docType === 'visa'">
+          Nro visa
+        </div>
+
+        <div
+          class="form-label"
+          *ngIf="formController.value.docType === 'pasaporte'"
+        >
+          Nro pasaporte
+        </div>
+
+        <div
+          class="form-label"
+          *ngIf="formController.value.docType === 'pasaporte_alternativo'"
+        >
+          Nro pasaporte alternativo
+        </div>
+
+        <ion-input
+          formControlName="docNro"
+          autocomplete="new-password"
+        ></ion-input>
+
+        <small *ngIf="docNoValido" class="text-danger"
+          >Debes ingresar un valor válido</small
+        >
+
+        <div class="form-label">Nro celular</div>
+        <ion-input
+          formControlName="celular"
+          autocomplete="new-password"
+        ></ion-input>
+        <small *ngIf="celularNoValido" class="text-danger"
+          >Debes ingresar un valor válido</small
+        >
+      </div>
+
+      <div class="rounded-button-container">
+        <ion-button expand="block" class="login-button" type="submit"
+          >Crear cuenta</ion-button
+        >
+      </div>
+    </form>
+  </div>
+</ion-content>
