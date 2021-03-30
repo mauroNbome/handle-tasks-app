@@ -3,6 +3,11 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ValidatorsService } from '../../services/validator.service';
 import { PaisesService } from '../../services/paises.service';
 
+import { ActionSheetController } from '@ionic/angular';
+
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -13,10 +18,14 @@ export class RegistroPage implements OnInit {
   countries: any[];
   fieldTextType: boolean = false;
 
+  converted_image: any;
+
   constructor(
     private fb: FormBuilder,
     private validator: ValidatorsService,
-    private paises: PaisesService
+    private paises: PaisesService,
+
+    private ActionSheetController: ActionSheetController
   ) {}
 
   ngOnInit() {
@@ -31,6 +40,53 @@ export class RegistroPage implements OnInit {
 
       console.log(this.countries);
     });
+  }
+
+  //subir imagen
+  async addImage() {
+    const actionSheet = await this.ActionSheetController.create({
+      header: 'Elija una opción',
+      buttons: [
+        {
+          text: 'Galería',
+          handler: () => {
+            this.selectOrtakePicture(CameraSource.Photos);
+          },
+        },
+        {
+          text: 'Cámara',
+          handler: () => {
+            this.selectOrtakePicture(CameraSource.Camera);
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'editionIcon',
+        },
+      ],
+    });
+    await actionSheet.present();
+  }
+
+  async selectOrtakePicture(source) {
+    // Variable para almacenar base64string generado por el plugin.
+    let base64;
+    const { Camera } = Plugins;
+    const result = await Camera.getPhoto({
+      quality: 75,
+      allowEditing: false,
+      // source: CameraSource.Camera,
+      source: source,
+      resultType: CameraResultType.Base64,
+    });
+
+    // this.image = this._domSanitizer.bypassSecurityTrustResourceUrl(
+    //   result && result.dataUrl
+    // );
+    base64 = result.base64String;
+
+    this.converted_image = 'data:image/jpeg;base64,' + base64;
   }
 
   // Getter function, retorna true o false, y puede usarse para validaciones en el HTML.

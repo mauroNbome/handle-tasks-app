@@ -1,0 +1,91 @@
+.logo-container {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    max-width: 265px;
+    max-height: 150px;
+  }
+}
+
+.form-avatar {
+  display: flex;
+  width: 8rem;
+  height: 5rem;
+  border-radius: 50%;
+  position: relative;
+  margin-left: auto;
+  margin-top: 2rem;
+
+  .icon-camera-container {
+    position: absolute;
+    left: 40%;
+    bottom: -10%;
+    padding: 0.5rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.title {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.block-wrapper {
+  margin-top: 2rem;
+  display: flex;
+
+  .block-1 {
+    color: #4d35a2;
+    text-align: center;
+    line-height: 3.5rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    height: 4rem;
+    border: 1px solid #ebe8f4;
+    background-color: #ebe8f4;
+    border-radius: 5px;
+    width: 45%;
+  }
+  .block-2 {
+    // Block-2 contains the margin-left of 10%.
+    margin-left: 10%;
+    color: #4d35a2;
+    line-height: 3.5rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    height: 4rem;
+    border: 1px solid #ebe8f4;
+    background-color: #ebe8f4;
+    border-radius: 5px;
+    width: 45%;
+    display: flex;
+    padding-left: 2rem;
+
+    .calendar-container {
+      color: #4d35a2;
+      justify-self: flex-end;
+      margin-left: auto;
+      height: auto;
+      width: 2.8rem;
+      border-left: 3px solid #4d35a2;
+      position: relative;
+
+      i {
+        position: absolute;
+        left: 19%;
+        bottom: 25%;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

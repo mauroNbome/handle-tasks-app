@@ -1,5 +1,4 @@
 .titulo {
-  color: #3880ff;
   font-size: 2.5rem;
   font-weight: 500;
   line-height: 25px;
@@ -30,6 +29,9 @@
   .radio-container {
     width: 50%;
     display: flex;
+    ion-radio {
+      --color-checked: #5c3ec2;
+    }
 
     .radio-label {
       font-size: 1.6rem;
@@ -41,12 +43,48 @@
     font-size: 1.4rem;
     color: red;
   }
+
+  .foto {
+    display: flex;
+    .form-avatar {
+      display: flex;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      position: relative;
+
+      .icon-camera-container {
+        position: absolute;
+        left: 65%;
+        bottom: -5%;
+        padding: 0.5rem;
+        background-color: #ffffff;
+        border-radius: 50%;
+      }
+
+      img {
+        border-radius: 50%;
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+    .avatar-text {
+      // line-height: 4.5rem;
+      margin-left: 4rem;
+      font-size: 1.6rem;
+      width: 25rem;
+      span {
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
+    }
+  }
 }
 .password-container {
   position: relative;
   .eye-icon {
     position: absolute;
-    right: 10px;
+    right: 5px;
     bottom: 10px;
     z-index: 300;
   }
@@ -59,5 +97,10 @@
   ion-button {
     height: 5rem;
     --border-radius: 16px !important;
+    --background: #4d35a2;
   }
+}
+
+ion-icon {
+  color: #4d35a2 !important;
 }

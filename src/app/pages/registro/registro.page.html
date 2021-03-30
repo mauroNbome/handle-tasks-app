@@ -78,7 +78,11 @@
         >
 
         <div class="form-label">Fecha de nacimiento</div>
-        <ion-input formControlName="fnac" type="date"></ion-input>
+        <ion-input
+          formControlName="fnac"
+          type="date"
+          class="date-input"
+        ></ion-input>
 
         <small *ngIf="fnacNoValido" class="text-danger"
           >Ingrese una fecha válida</small
@@ -176,6 +180,21 @@
         <small *ngIf="celularNoValido" class="text-danger"
           >Debes ingresar un valor válido</small
         >
+
+        <div class="form-label">Foto de perfil</div>
+        <div class="foto" (click)="addImage()">
+          <div class="form-avatar">
+            <div class="icon-camera-container">
+              <i class="fas fa-camera"></i>
+            </div>
+            <img src="../../../assets/avatar-1.png" *ngIf="!converted_image" />
+            <img [src]="converted_image" *ngIf="converted_image" />
+          </div>
+          <div class="avatar-text">
+            Sacate una foto<br />
+            <span>(Puedes cambiarla en cualquier momento)</span>
+          </div>
+        </div>
       </div>
 
       <div class="rounded-button-container">

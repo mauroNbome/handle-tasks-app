@@ -1,0 +1,29 @@
+<ion-header>
+  <div class="logo-container">
+    <img src="../../../assets/logo-25.svg" />
+  </div>
+</ion-header>
+
+<ion-content
+  ><div class="main-box">
+    <div class="form-avatar" (click)="addImage()">
+      <div class="icon-camera-container">
+        <i class="fas fa-camera"></i>
+      </div>
+      <img src="../../../assets/avatar-1.png" *ngIf="!converted_image" />
+      <img [src]="converted_image" *ngIf="converted_image" />
+    </div>
+
+    <div class="title">Mis viajes</div>
+
+    <div class="block-wrapper">
+      <div class="block-1">Miami</div>
+      <div class="block-2">
+        33/03/1933
+        <div class="calendar-container">
+          <i class="far fa-calendar-alt fa-2x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
