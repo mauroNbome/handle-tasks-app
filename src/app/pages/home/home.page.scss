@@ -55,6 +55,7 @@
     background-color: #ebe8f4;
     border-radius: 5px;
     width: 45%;
+    border: 1px solid #4d35a2;
   }
   .block-2 {
     // Block-2 contains the margin-left of 10%.
@@ -69,7 +70,8 @@
     border-radius: 5px;
     width: 45%;
     display: flex;
-    padding-left: 2rem;
+    padding-left: 1rem;
+    border: 1px solid #4d35a2;
 
     .calendar-container {
       color: #4d35a2;
@@ -77,7 +79,7 @@
       margin-left: auto;
       height: auto;
       width: 2.8rem;
-      border-left: 3px solid #4d35a2;
+      border-left: 1px solid #4d35a2;
       position: relative;
 
       i {
@@ -87,5 +89,21 @@
         font-size: 1.8rem;
       }
     }
+  }
+}
+
+.end-container {
+  position: absolute;
+  bottom: 0;
+  width: 89%;
+  height: 60px;
+
+  .logout {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 1rem;
+    background-color: #ebe8f4;
+    border-radius: 4%;
+    width: 9rem;
   }
 }
