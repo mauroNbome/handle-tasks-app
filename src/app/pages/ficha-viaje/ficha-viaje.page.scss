@@ -35,45 +35,46 @@
   }
 }
 
-.title {
-  margin-top: 3rem;
-  font-size: 2.4rem;
-  font-weight: 500;
+.ficha-nro {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e8d5b5;
+}
+
+.destino {
   text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .block-wrapper {
   margin-top: 2rem;
-  display: flex;
 
-  .viajes-block-1 {
-    color: #4d35a2;
+  .subtitle {
+    font-size: 1.4rem;
+    font-weight: 400;
     text-align: center;
-    line-height: 3.6rem;
-    font-weight: 600;
-    font-size: 1.8rem;
-    height: 4rem;
-    border: 1px solid #ebe8f4;
-    background-color: #ebe8f4;
-    border-radius: 5px;
-    width: 45%;
-    border: 1px solid #4d35a2;
+    margin-bottom: 0.4rem;
   }
+
   .viajes-block-2 {
-    // Block-2 contains the margin-left of 10%.
-    margin-left: 10%;
+    margin: 0 auto;
     color: #4d35a2;
-    line-height: 3.6rem;
-    font-size: 1.6rem;
+    line-height: 4.6rem;
+    font-size: 1.9rem;
     font-weight: 600;
-    height: 4rem;
+    height: 5rem;
     border: 1px solid #ebe8f4;
     background-color: #ebe8f4;
     border-radius: 5px;
-    width: 45%;
+    width: 60%;
     display: flex;
     padding-left: 1rem;
     border: 1px solid #4d35a2;
+    padding-left: 10%;
 
     .calendar-container {
       color: #4d35a2;
@@ -92,33 +93,44 @@
       }
     }
   }
+}
 
-  .presupuesto-block {
-    color: #0c56b5;
-    text-align: center;
-    line-height: 3.6rem;
+.downloadable-data {
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  background-color: #fcf7ff;
+  border-radius: 30px;
+
+  .inner-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+  .label {
+    width: 60%;
     font-weight: 600;
-    font-size: 1.8rem;
-    border: 1px solid #e9f6ff;
-    background-color: #e9f6ff;
-    border-radius: 5px;
-    width: 45%;
-    border: 1px solid #0c56b5;
+    font-size: 1.6rem;
+    text-align: right;
+  }
+  .download-icon {
+    margin-left: 10%;
+    width: 30%;
+
+    i {
+      color: #9989b4;
+    }
   }
 }
 
-.end-container {
-  position: absolute;
-  bottom: 0;
-  width: 89%;
-  height: 60px;
+.button-container {
+  width: 40%;
+  margin: 0 auto 2rem auto;
 
-  .logout {
-    font-size: 1.8rem;
-    font-weight: 500;
-    padding: 1rem;
-    background-color: #ebe8f4;
-    border-radius: 4%;
-    width: 9rem;
+  .go-home-button {
+    width: 100%;
+    height: 5rem;
+    --border-radius: 16px !important;
+    --background: #4d35a2;
   }
 }

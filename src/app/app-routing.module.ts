@@ -20,7 +20,19 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },  {
+    path: 'ficha-viaje',
+    loadChildren: () => import('./pages/ficha-viaje/ficha-viaje.module').then( m => m.FichaViajePageModule)
   },
+  {
+    path: 'recover-password',
+    loadChildren: () => import('./pages/recover-password/recover-password.module').then( m => m.RecoverPasswordPageModule)
+  },
+  {
+    path: 'presupuesto',
+    loadChildren: () => import('./pages/presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule)
+  },
+
 ];
 
 @NgModule({

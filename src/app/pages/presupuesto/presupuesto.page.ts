@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { ActionSheetController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-presupuesto',
+  templateUrl: './presupuesto.page.html',
+  styleUrls: ['./presupuesto.page.scss'],
 })
-export class HomePage implements OnInit {
+export class PresupuestoPage implements OnInit {
   converted_image: any;
-
   constructor(private ActionSheetController: ActionSheetController) {}
 
   ngOnInit() {}

@@ -1,0 +1,86 @@
+<ion-header>
+  <div class="logo-container">
+    <img src="../../../assets/logo-25.svg" />
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="main-box">
+    <div class="form-avatar" (click)="addImage()">
+      <div class="icon-camera-container">
+        <i class="fas fa-camera"></i>
+      </div>
+      <img src="../../../assets/avatar-1.png" *ngIf="!converted_image" />
+      <img [src]="converted_image" *ngIf="converted_image" />
+    </div>
+
+    <div class="ficha-nro">N° Ficha 00012</div>
+    <div class="destino">Miami</div>
+
+    <div class="block-wrapper">
+      <div class="subtitle">Desde</div>
+      <div class="viajes-block-2">
+        10 sept. 2021
+        <div class="calendar-container">
+          <i class="far fa-calendar-alt fa-2x"></i>
+        </div>
+      </div>
+
+      <div class="subtitle" style="margin-top: 1rem">Hasta</div>
+      <div class="viajes-block-2">
+        25 sept. 2021
+        <div class="calendar-container">
+          <i class="far fa-calendar-alt fa-2x"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="downloadable-data">
+      <div class="inner-wrapper">
+        <div class="label">Aéreos IDA</div>
+        <div class="download-icon">
+          <i class="fas fa-download fa-2x"></i>
+        </div>
+      </div>
+
+      <div class="inner-wrapper">
+        <div class="label">Translados IDA</div>
+        <div class="download-icon">
+          <i class="fas fa-download fa-2x"></i>
+        </div>
+      </div>
+
+      <div class="inner-wrapper">
+        <div class="label">Hotel: VSDA</div>
+        <div class="download-icon">
+          <i class="fas fa-download fa-2x"></i>
+        </div>
+      </div>
+
+      <div class="inner-wrapper">
+        <div class="label">Excursiones Terrestres</div>
+        <div class="download-icon">
+          <i class="fas fa-download fa-2x"></i>
+        </div>
+      </div>
+
+      <div class="inner-wrapper">
+        <div class="label">Translado VUELTA</div>
+        <div class="download-icon">
+          <i class="fas fa-download fa-2x"></i>
+        </div>
+      </div>
+
+      <div class="inner-wrapper">
+        <div class="label">Aéreos VUELTA</div>
+        <div class="download-icon">
+          <i class="fas fa-download fa-2x"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <ion-button class="go-home-button" routerLink="/home">Home</ion-button>
+    </div>
+  </div>
+</ion-content>

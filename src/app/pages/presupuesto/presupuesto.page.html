@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="logo-container">
+    <img src="../../../assets/logo-25.svg" />
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="main-box">
+    <div class="form-avatar" (click)="addImage()">
+      <div class="icon-camera-container">
+        <i class="fas fa-camera"></i>
+      </div>
+      <img src="../../../assets/avatar-1.png" *ngIf="!converted_image" />
+      <img [src]="converted_image" *ngIf="converted_image" />
+    </div>
+
+    <div class="label-destino">Brasil 2021</div>
+
+    <ion-textarea
+      style="margin-top: 2rem"
+      rows="6"
+      placeholder="Realiza comentarios sobre tu presupuesto..."
+    ></ion-textarea>
+
+    <div class="button-container">
+      <div style="margin: 0 auto">
+        <ion-button
+          class="comentar-button"
+          routerLink="/home"
+          style="margin-right: 4%"
+          >Comentar presupuesto</ion-button
+        >
+      </div>
+    </div>
+
+    <div class="button-container">
+      <ion-button class="button" routerLink="/home" style="margin-right: 4%"
+        >Confirmar</ion-button
+      >
+      <ion-button class="button2" routerLink="/home"
+        >Archivar Presupuesto</ion-button
+      >
+    </div>
+  </div>
+</ion-content>

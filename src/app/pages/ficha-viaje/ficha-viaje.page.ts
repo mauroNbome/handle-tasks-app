@@ -4,13 +4,12 @@ import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { ActionSheetController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-ficha-viaje',
+  templateUrl: './ficha-viaje.page.html',
+  styleUrls: ['./ficha-viaje.page.scss'],
 })
-export class HomePage implements OnInit {
+export class FichaViajePage implements OnInit {
   converted_image: any;
-
   constructor(private ActionSheetController: ActionSheetController) {}
 
   ngOnInit() {}
