@@ -19,35 +19,71 @@
   color: var(--ion-color-tertiary);
 }
 ion-grid {
-  margin-bottom: 4rem;
-  ion-col {
-    height: 115px;
+  ion-row {
+    margin: 4rem 0;
+    ion-col {
+      height: 100%;
+    }
   }
 }
 
 .colorized {
-  margin: 6rem auto 0 auto;
+  margin: 0 auto;
+  padding: 1.5rem;
   background-color: #54585b;
-  width: 90px;
-  height: 90px;
-  border-radius: 50px;
+  width: 95%;
+  height: 18rem;
+  border-radius: 30px;
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: var(--ion-color-secondary-shade1);
 
-  .icon-container {
-    margin: 1.5rem auto 0 auto;
-    i {
-      font-size: 30px;
+  .first-row-container {
+    display: flex;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+
+    .icon-container {
+      width: 55px;
+      height: 55px;
+      border-radius: 10px;
+      background-color: var(--ion-color-secondary-shade2);
+      .icon-inner {
+        position: relative;
+        i {
+          position: absolute;
+          font-size: 33px;
+          color: #fff;
+          bottom: -45px;
+          right: 13px;
+        }
+      }
+    }
+
+    .colon-container {
+      font-size: 2rem;
       color: #fff;
+      margin-left: auto;
+      margin-right: 5px;
+      color: #575759;
     }
   }
 
-  .access-label {
-    margin-top: 5px;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #808283;
-    text-align: center;
+  .informative-text {
+    .access-label {
+      justify-self: flex-end;
+      margin-top: 5px;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #fdfdfd;
+    }
+
+    .useful-data {
+      margin-top: 0.5rem;
+      font-size: 1.6rem;
+      color: #828284;
+      font-weight: 500;
+    }
   }
 }

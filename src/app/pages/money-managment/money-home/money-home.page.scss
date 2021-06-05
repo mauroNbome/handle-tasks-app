@@ -63,6 +63,13 @@ ion-row {
 .list-container {
   margin-top: 8rem;
 
+  .last-transactions {
+    text-align: center;
+    margin-bottom: 4rem;
+    --color: #fff;
+    font-weight: 400;
+  }
+
   .date-title {
     margin-left: 3.2rem;
     margin-bottom: 2rem;
