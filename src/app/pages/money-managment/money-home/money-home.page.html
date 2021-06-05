@@ -1,0 +1,100 @@
+<app-header [title]="'Money Managment'"></app-header>
+
+<ion-content>
+  <div class="b-padding">
+    <div class="balance"><span>$</span>8.300</div>
+    <div class="sub-balance">Average inc: <span>8.000</span></div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <div class="menu-item">
+            <div class="icon-container">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+          </div>
+
+          <div class="text">Add income</div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="menu-item">
+            <div class="icon-container">
+              <i class="fas fa-plus"></i>
+            </div>
+          </div>
+
+          <div class="text">Add Spend</div>
+        </ion-col>
+
+        <ion-col size="3">
+          <div class="menu-item">
+            <div class="icon-container">
+              <i class="fas fa-cog"></i>
+            </div>
+          </div>
+
+          <div class="text">Settings</div>
+        </ion-col>
+
+        <ion-col size="3">
+          <div class="menu-item">
+            <div class="icon-container">
+              <i class="fas fa-list"></i>
+            </div>
+          </div>
+
+          <div class="text">All Moves</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="list-container">
+    <div class="date-title">May 8, 2021</div>
+
+    <div class="card">
+      <div class="img-container">
+        <ion-avatar>
+          <img src="../../../../assets/me.jpeg" alt="" />
+        </ion-avatar>
+      </div>
+
+      <div class="card-body">
+        <div class="card-title">Pago gimnasio CAOVA</div>
+        <div class="card-timestamp">5:45pm</div>
+      </div>
+
+      <div class="card-amount">-$300</div>
+    </div>
+
+    <div class="card">
+      <div class="img-container">
+        <ion-avatar>
+          <img src="../../../../assets/me.jpeg" alt="" />
+        </ion-avatar>
+      </div>
+
+      <div class="card-body">
+        <div class="card-title">Pago Internet Arnet</div>
+        <div class="card-timestamp">6:41pm</div>
+      </div>
+
+      <div class="card-amount">-$700</div>
+    </div>
+
+    <div class="card">
+      <div class="img-container">
+        <ion-avatar>
+          <img src="../../../../assets/me.jpeg" alt="" />
+        </ion-avatar>
+      </div>
+
+      <div class="card-body">
+        <div class="card-title">Supermercado</div>
+        <div class="card-timestamp">7:55pm</div>
+      </div>
+
+      <div class="card-amount">-$150</div>
+    </div>
+  </div>
+</ion-content>

@@ -15,24 +15,45 @@ const routes: Routes = [
   },
   {
     path: 'registro',
-    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+    loadChildren: () =>
+      import('./pages/registro/registro.module').then(
+        (m) => m.RegistroPageModule
+      ),
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },  {
-    path: 'ficha-viaje',
-    loadChildren: () => import('./pages/ficha-viaje/ficha-viaje.module').then( m => m.FichaViajePageModule)
-  },
-  {
-    path: 'recover-password',
-    loadChildren: () => import('./pages/recover-password/recover-password.module').then( m => m.RecoverPasswordPageModule)
-  },
-  {
-    path: 'presupuesto',
-    loadChildren: () => import('./pages/presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule)
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
 
+  {
+    path: 'recover-password',
+    loadChildren: () =>
+      import('./pages/recover-password/recover-password.module').then(
+        (m) => m.RecoverPasswordPageModule
+      ),
+  },
+  {
+    path: 'money-home',
+    loadChildren: () =>
+      import('./pages/money-managment/money-home/money-home.module').then(
+        (m) => m.MoneyHomePageModule
+      ),
+  },
+  {
+    path: 'goals-home',
+    loadChildren: () =>
+      import('./pages/goals-managment/goals-home/goals-home.module').then(
+        (m) => m.GoalsHomePageModule
+      ),
+  },
+  {
+    path: 'notes-home',
+    loadChildren: () =>
+      import('./pages/notes-managment/notes-home/notes-home.module').then(
+        (m) => m.NotesHomePageModule
+      ),
+  },
 ];
 
 @NgModule({

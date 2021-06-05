@@ -1,3 +1,7 @@
+ion-content {
+  --ion-background-color: var(--ion-color-secondary);
+}
+
 .logo-container {
   height: 25rem;
   display: flex;
@@ -19,16 +23,13 @@
     font-weight: 500;
     margin-bottom: 0.5rem;
     margin-left: 0.5rem;
+    color: #fbfbfb;
   }
   ion-input {
-    border: 1px solid #000000;
     font-size: 1.6rem;
     margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-color: rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
-    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
-    border-radius: 1.5rem;
+    color: var(--ion-color-tertiary);
+    border-bottom: 1px solid var(--ion-color-tertiary);
   }
 
   .rounded-button-container {
@@ -36,8 +37,7 @@
 
     ion-button {
       height: 5rem;
-      --border-radius: 16px !important;
-      --background: #4d35a2;
+      --border-radius: 22px !important;
     }
   }
 
@@ -46,6 +46,7 @@
     font-size: 1.6rem;
     text-align: center;
     font-weight: 500;
+    color: #fbfbfb;
 
     &:focus {
       outline: none;

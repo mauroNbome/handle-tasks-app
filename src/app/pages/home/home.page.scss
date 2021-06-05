@@ -1,124 +1,53 @@
-.logo-container {
-  display: flex;
-  align-content: center;
-  justify-content: flex-end;
-
+.puppy-sector {
   img {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1rem;
-    max-width: 265px;
-    max-height: 150px;
-  }
-}
-
-.form-avatar {
-  display: flex;
-  width: 8rem;
-  height: 5rem;
-  border-radius: 50%;
-  position: relative;
-  margin-left: auto;
-  margin-top: 2rem;
-
-  .icon-camera-container {
-    position: absolute;
-    left: 40%;
-    bottom: -10%;
-    padding: 0.5rem;
-    background-color: #ffffff;
-    border-radius: 50%;
-  }
-
-  img {
-    border-radius: 50%;
+    max-height: 400px;
   }
 }
 
 .title {
-  margin-top: 3rem;
   font-size: 2.4rem;
   font-weight: 500;
   text-align: center;
+  color: #fbfbfb;
 }
 
-.block-wrapper {
+.subtitle {
   margin-top: 2rem;
-  display: flex;
-
-  .viajes-block-1 {
-    color: #4d35a2;
-    text-align: center;
-    line-height: 3.6rem;
-    font-weight: 600;
-    font-size: 1.8rem;
-    height: 4rem;
-    border: 1px solid #ebe8f4;
-    background-color: #ebe8f4;
-    border-radius: 5px;
-    width: 45%;
-    border: 1px solid #4d35a2;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--ion-color-tertiary);
+}
+ion-grid {
+  margin-bottom: 4rem;
+  ion-col {
+    height: 115px;
   }
-  .viajes-block-2 {
-    // Block-2 contains the margin-left of 10%.
-    margin-left: 10%;
-    color: #4d35a2;
-    line-height: 3.6rem;
-    font-size: 1.6rem;
-    font-weight: 600;
-    height: 4rem;
-    border: 1px solid #ebe8f4;
-    background-color: #ebe8f4;
-    border-radius: 5px;
-    width: 45%;
-    display: flex;
-    padding-left: 1rem;
-    border: 1px solid #4d35a2;
+}
 
-    .calendar-container {
-      color: #4d35a2;
-      justify-self: flex-end;
-      margin-left: auto;
-      height: auto;
-      width: 2.8rem;
-      border-left: 1px solid #4d35a2;
-      position: relative;
+.colorized {
+  margin: 6rem auto 0 auto;
+  background-color: #54585b;
+  width: 90px;
+  height: 90px;
+  border-radius: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
-      i {
-        position: absolute;
-        left: 16%;
-        bottom: 30%;
-        font-size: 2rem;
-      }
+  .icon-container {
+    margin: 1.5rem auto 0 auto;
+    i {
+      font-size: 30px;
+      color: #fff;
     }
   }
 
-  .presupuesto-block {
-    color: #0c56b5;
-    text-align: center;
-    line-height: 3.6rem;
+  .access-label {
+    margin-top: 5px;
+    font-size: 1.8rem;
     font-weight: 600;
-    font-size: 1.8rem;
-    border: 1px solid #e9f6ff;
-    background-color: #e9f6ff;
-    border-radius: 5px;
-    width: 45%;
-    border: 1px solid #0c56b5;
-  }
-}
-
-.end-container {
-  position: absolute;
-  bottom: 0;
-  width: 89%;
-  height: 60px;
-
-  .logout {
-    font-size: 1.8rem;
-    font-weight: 500;
-    padding: 1rem;
-    background-color: #ebe8f4;
-    border-radius: 4%;
-    width: 9rem;
+    color: #808283;
+    text-align: center;
   }
 }
