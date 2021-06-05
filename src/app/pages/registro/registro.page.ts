@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ValidatorsService } from '../../services/validator.service';
-import { PaisesService } from '../../services/paises.service';
 
 import { ActionSheetController } from '@ionic/angular';
 
@@ -22,25 +20,11 @@ export class RegistroPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private validator: ValidatorsService,
-    private paises: PaisesService,
 
     private ActionSheetController: ActionSheetController
   ) {}
 
-  ngOnInit() {
-    this.crearFormulario();
-    this.paises.getPaises().subscribe((paises) => {
-      this.countries = paises;
-
-      this.countries.unshift({
-        nombre: 'Seleccione un pais',
-        code: '',
-      });
-
-      console.log(this.countries);
-    });
-  }
+  ngOnInit() {}
 
   //subir imagen
   async addImage() {
@@ -153,44 +137,24 @@ export class RegistroPage implements OnInit {
   }
 
   crearFormulario() {
-    this.formController = this.fb.group(
-      {
-        nombre: ['', [Validators.required]],
-        apellido: ['', [Validators.required]],
-        email: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
-          ],
+    this.formController = this.fb.group({
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ],
-        email2: ['', Validators.required],
-        password: ['', Validators.required],
-        fnac: ['', Validators.required],
-        sexo: ['masculino', Validators.required],
-        nacionalidad: ['', Validators.required],
-        docType: ['dni', Validators.required],
-        docNro: ['', Validators.required],
-        celular: ['', Validators.required],
-      },
-      {
-        validators: this.validator.emailMatch('email', 'email2'),
-      }
-    );
-  }
-
-  guardar() {
-    // if (this.forma.invalid) {
-    //   Object.values(this.forma.controls).forEach((control) => {
-    //     if (control instanceof FormGroup) {
-    //       Object.values(control.controls).forEach((control) =>
-    //         control.markAsTouched()
-    //       );
-    //     } else {
-    //       control.markAsTouched();
-    //     }
-    //   });
-    // }
-    console.log('Form enviado exitosamente', this.formController.value);
+      ],
+      email2: ['', Validators.required],
+      password: ['', Validators.required],
+      fnac: ['', Validators.required],
+      sexo: ['masculino', Validators.required],
+      nacionalidad: ['', Validators.required],
+      docType: ['dni', Validators.required],
+      docNro: ['', Validators.required],
+      celular: ['', Validators.required],
+    });
   }
 }
