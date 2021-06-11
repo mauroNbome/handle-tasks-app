@@ -1,0 +1,9 @@
+<app-header [title]="'Add Transaction'"></app-header>
+
+<ion-content>
+  <div class="balance"><span>$</span>{{ balance }}</div>
+  <app-keyboard
+    [balance]="balance"
+    (onBalanceChange)="changeBalance($event)"
+  ></app-keyboard>
+</ion-content>

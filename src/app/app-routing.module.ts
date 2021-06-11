@@ -54,6 +54,13 @@ const routes: Routes = [
         (m) => m.NotesHomePageModule
       ),
   },
+  {
+    path: 'money-home/add-transaction',
+    loadChildren: () =>
+      import(
+        './pages/money-managment/add-transaction/add-transaction.module'
+      ).then((m) => m.AddTransactionPageModule),
+  },
 ];
 
 @NgModule({
