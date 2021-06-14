@@ -55,11 +55,18 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'money-home/add-transaction',
+    path: 'money-home/add-transaction/:opt',
     loadChildren: () =>
       import(
         './pages/money-managment/add-transaction/add-transaction.module'
       ).then((m) => m.AddTransactionPageModule),
+  },
+  {
+    path: 'money-home/add-transaction/:opt/transaction-data',
+    loadChildren: () =>
+      import(
+        './pages/money-managment/transaction-data/transaction-data.module'
+      ).then((m) => m.TransactionDataPageModule),
   },
 ];
 

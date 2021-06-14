@@ -1,9 +1,32 @@
 <app-header [title]="'Add Transaction'"></app-header>
 
 <ion-content>
-  <div class="balance"><span>$</span>{{ balance }}</div>
+  <div class="header-title" *ngIf="opt === 'add-founds'">
+    Add the amount of money you want to add
+  </div>
+
+  <div class="header-title" *ngIf="opt === 'add-spending'">
+    How much money you've spent in this transaction?
+  </div>
+
+  <div class="balance">
+    <span
+      class="operator"
+      [style.color]="opt === 'add-founds'? '#C4E5B2' : '#E91C1C'"
+      >{{ opt === 'add-founds' ? '+' : '-'}}</span
+    >
+    <span class="money-sign">$</span>{{ balance }}
+  </div>
   <app-keyboard
     [balance]="balance"
     (onBalanceChange)="changeBalance($event)"
   ></app-keyboard>
+
+  <div class="button-container">
+    <ion-button
+      (click)="continueWithTransaction(balance)"
+      [disabled]="this.balance === 0"
+      >Continue</ion-button
+    >
+  </div>
 </ion-content>
