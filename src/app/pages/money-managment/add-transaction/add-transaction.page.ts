@@ -16,14 +16,13 @@ export class AddTransactionPage implements OnInit {
   constructor(
     private activatedRouter: ActivatedRoute,
     private router: Router,
-    private LocalManagmentService: LocalManagmentService
+    public LocalManagmentService: LocalManagmentService
   ) {
     this.opt = this.activatedRouter.snapshot.paramMap.get('opt');
   }
 
   ngOnInit() {
     this.balance = 0;
-    console.log(this.opt);
   }
 
   // Método que se ejecuta desde el keyboard al accionar un botón. Recibe un value
@@ -38,7 +37,24 @@ export class AddTransactionPage implements OnInit {
 
     // Backbutton!
     if (buttonValue === 'backspace') {
-      this.balance = 0;
+      console.log(this.balance.length);
+      if (this.balance.length === undefined) {
+        this.balance = 0;
+      }
+      if (this.balance.length > 0) {
+        if (this.balance.length === 1) {
+          this.balance = 0;
+        } else {
+          this.balance = String(
+            this.balance.substring(0, this.balance.length - 1)
+          );
+        }
+
+        if (this.balance.length === 0) {
+          this.balance = 0;
+        }
+      }
+
       return;
     }
 
@@ -71,11 +87,20 @@ export class AddTransactionPage implements OnInit {
       return;
     }
 
+    this.LocalManagmentService.newTransaction = {
+      id: '',
+      amount: 0,
+      type: '',
+      main_category: '',
+      subcategory: '',
+      concept: '',
+      date: new Date(),
+    };
+
     this.LocalManagmentService.newTransaction.amount = balance;
     this.LocalManagmentService.newTransaction.type = this.opt;
     this.LocalManagmentService.newTransaction.id =
       this.LocalManagmentService.createRandomID();
-
     // We start the new transaction here, calling variables in the service. Redirecting to the transaction config.
     this.router.navigate([
       'money-home',

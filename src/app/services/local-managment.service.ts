@@ -9,6 +9,10 @@ export class LocalManagmentService {
     id: '',
     amount: 0,
     type: '',
+    main_category: '',
+    subcategory: '',
+    concept: '',
+    date: new Date(),
   };
 
   constructor(private toastController: ToastController) {}
@@ -35,6 +39,7 @@ export class LocalManagmentService {
     });
     toast.present();
   }
+
   async presentToastSuccess(msj) {
     const toast = await this.toastController.create({
       message: msj,
@@ -42,5 +47,21 @@ export class LocalManagmentService {
       color: 'success',
     });
     toast.present();
+  }
+
+  saveTransactionList(data) {
+    let transactionList = this.getTransactions();
+
+    if (transactionList !== null) {
+      transactionList.push(data);
+    } else {
+      transactionList = [data];
+    }
+
+    localStorage.setItem('transactions', JSON.stringify(transactionList));
+  }
+
+  getTransactions() {
+    return JSON.parse(localStorage.getItem('transactions'));
   }
 }

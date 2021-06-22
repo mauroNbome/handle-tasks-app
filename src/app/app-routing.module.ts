@@ -68,6 +68,20 @@ const routes: Routes = [
         './pages/money-managment/transaction-data/transaction-data.module'
       ).then((m) => m.TransactionDataPageModule),
   },
+  {
+    path: 'money-home/money-settings',
+    loadChildren: () =>
+      import(
+        './pages/money-managment/money-settings/money-settings.module'
+      ).then((m) => m.MoneySettingsPageModule),
+  },
+  {
+    path: 'money-home/transaction-list',
+    loadChildren: () =>
+      import(
+        './pages/money-managment/transaction-list/transaction-list.module'
+      ).then((m) => m.TransactionListPageModule),
+  },
 ];
 
 @NgModule({
