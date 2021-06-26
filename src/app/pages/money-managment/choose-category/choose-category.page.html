@@ -1,0 +1,31 @@
+<app-header [title]="'Category chooser'"></app-header>
+
+<ion-content>
+  <div class="header-title">Select the category for this transaction</div>
+
+  <div class="cat-container">
+    <div class="button-cointainer">
+      <ion-button
+        >Edit
+        <ion-icon style="font-size: 25px" name="options-outline"></ion-icon
+      ></ion-button>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" *ngFor="let item of categorias | keyvalue:asIsOrder">
+          <div class="item">
+            <div class="cat-icon">
+              <ion-icon name="cart-outline"></ion-icon>
+            </div>
+            <div
+              class="cat-title"
+              [ngClass]="{'cat-pt-overflow': item.value.label.length > 10}"
+            >
+              {{ item.value.label }}
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

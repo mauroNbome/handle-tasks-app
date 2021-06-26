@@ -62,6 +62,13 @@ const routes: Routes = [
       ).then((m) => m.AddTransactionPageModule),
   },
   {
+    path: 'money-home/add-transaction/:opt/choose-category',
+    loadChildren: () =>
+      import(
+        './pages/money-managment/choose-category/choose-category.module'
+      ).then((m) => m.ChooseCategoryPageModule),
+  },
+  {
     path: 'money-home/add-transaction/:opt/transaction-data',
     loadChildren: () =>
       import(

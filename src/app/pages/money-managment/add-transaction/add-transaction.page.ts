@@ -106,7 +106,7 @@ export class AddTransactionPage implements OnInit {
       'money-home',
       'add-transaction',
       this.opt,
-      'transaction-data',
+      'choose-category',
     ]);
   }
 }
