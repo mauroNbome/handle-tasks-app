@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LocalManagmentService } from '../../../services/local-managment.service';
 
 @Component({
   selector: 'app-choose-category',
@@ -9,70 +10,60 @@ import { ActivatedRoute } from '@angular/router';
 export class ChooseCategoryPage implements OnInit {
   opt: any;
 
-  categorias = {
-    supermercado: {
-      label: 'Supermercado',
-      subcategories: [
-        { id: 0, label: 'Compra mensual', value: 'compra_mensual' },
-        { id: 1, label: 'Compra casual', value: 'compra_casual' },
-      ],
-    },
-    comida: {
-      label: 'Comida',
-      subcategories: [
-        { id: 0, label: 'Comida callejera', value: 'comida_callejera' },
-        { id: 1, label: 'Restaurante', value: 'restaurante' },
-      ],
-    },
-    vehiculo: {
-      label: 'Vehiculo',
-      subcategories: [
-        { id: 0, label: 'Nafta', value: 'nafta' },
-        { id: 1, label: 'Patente', value: 'patente' },
-        { id: 2, label: 'Seguro', value: 'seguro' },
-        { id: 3, label: 'Gastos mecánicos', value: 'mechanical_spending' },
-      ],
-    },
-    deportes: {
-      label: 'Deportes',
-      subcategories: [
-        { id: 0, label: 'Gimnasio', value: 'gimnasio' },
-        { id: 1, label: 'Yoga', value: 'yoga' },
-      ],
-    },
+  currentCategory: any;
 
-    ropa: {
-      label: 'Ropa',
-      subcategories: [{ id: 0, label: 'Compra', value: 'compra_ropa' }],
-    },
+  currentSubcategory: any = null;
 
-    educacion: {
-      label: 'Educación',
-      subcategories: [
-        { id: 0, label: 'Libros', value: 'libros' },
-        { id: 1, label: 'Cursos', value: 'cursos' },
-        { id: 2, label: 'Seminarios', value: 'seminarios' },
-      ],
-    },
-
-    regalos: {
-      label: 'Regalos',
-      subcategories: [
-        { id: 0, label: 'Para otros', value: 'giveaway' },
-        { id: 1, label: 'Para mi', value: 'self_gift' },
-      ],
-    },
-  };
-
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    public LocalManagmentService: LocalManagmentService
+  ) {}
 
   ngOnInit() {
     this.opt = this.activatedRoute.snapshot.paramMap.get('opt');
     console.log(this.opt);
+    this.currentCategory = {
+      key: 'supermercado',
+      value: {
+        label: this.LocalManagmentService.categorias.comida.label,
+        subcategories:
+          this.LocalManagmentService.categorias.supermercado.subcategories,
+        icon: 'pizza',
+      },
+    };
+
+    console.log(this.currentCategory);
   }
 
   // Este método ordena el objeto by its keys.
   asIsOrder(a, b) {
     return 1;
+  }
+
+  selectCategory(item) {
+    if (item !== this.currentCategory) {
+      this.currentSubcategory = null;
+      if (this.LocalManagmentService.newTransaction.subcategory) {
+        this.LocalManagmentService.newTransaction.subcategory = '';
+      }
+    }
+
+    this.currentCategory = item;
+
+    this.LocalManagmentService.newTransaction.main_category = item.key;
+  }
+
+  subcategoryChange() {
+    this.LocalManagmentService.newTransaction.subcategory =
+      this.currentSubcategory;
+  }
+
+  goToCategoryManagment() {
+    this.router.navigate(['money-home', 'category-setup']);
+  }
+
+  continue() {
+    console.log(this.LocalManagmentService.newTransaction);
   }
 }

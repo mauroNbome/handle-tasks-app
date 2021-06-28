@@ -76,6 +76,24 @@ ion-input {
   background-color: #27292d !important;
 }
 
+.popover-content {
+  --min-width: 82%;
+  --background: #27292d !important;
+}
+
+ion-list {
+}
+
+ion-list,
+ion-list-header,
+ion-item,
+ion-thumbnail,
+ion-label {
+  --background: var(--ion-color-secondary-shade2) !important;
+  background-color: var(--ion-color-secondary-shade2) !important;
+  color: var(--ion-color-secondary-gray-contrast);
+}
+
 // animista:
 
 /**

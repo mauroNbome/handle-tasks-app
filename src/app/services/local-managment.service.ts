@@ -15,6 +15,68 @@ export class LocalManagmentService {
     date: new Date(),
   };
 
+  categorias = {
+    supermercado: {
+      label: 'Supermercado',
+      icon: 'cart-outline',
+      subcategories: [
+        { id: 0, label: 'Compra mensual' },
+        { id: 1, label: 'Compra casual' },
+      ],
+    },
+    comida: {
+      label: 'Comida',
+      icon: 'pizza',
+      subcategories: [
+        { id: 0, label: 'Comida callejera' },
+        { id: 1, label: 'Restaurante' },
+      ],
+    },
+    vehiculo: {
+      label: 'Vehiculo',
+      icon: 'car',
+      subcategories: [
+        { id: 0, label: 'Nafta' },
+        { id: 1, label: 'Patente' },
+        { id: 2, label: 'Seguro' },
+        { id: 3, label: 'Gastos mecánicos' },
+      ],
+    },
+    deportes: {
+      label: 'Deportes',
+      icon: 'basketball',
+      subcategories: [
+        { id: 0, label: 'Gimnasio' },
+        { id: 1, label: 'Yoga' },
+      ],
+    },
+
+    ropa: {
+      label: 'Ropa',
+      icon: 'shirt',
+      subcategories: [{ id: 0, label: 'Compra' }],
+    },
+
+    educacion: {
+      label: 'Educación',
+      icon: 'book',
+      subcategories: [
+        { id: 0, label: 'Libros' },
+        { id: 1, label: 'Cursos' },
+        { id: 2, label: 'Seminarios' },
+      ],
+    },
+
+    regalos: {
+      label: 'Regalos',
+      icon: 'gift',
+      subcategories: [
+        { id: 0, label: 'Para otros' },
+        { id: 1, label: 'Para mi' },
+      ],
+    },
+  };
+
   constructor(private toastController: ToastController) {}
 
   createDateStamp(currentDate) {

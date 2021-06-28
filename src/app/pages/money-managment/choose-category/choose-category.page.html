@@ -1,31 +1,65 @@
 <app-header [title]="'Category chooser'"></app-header>
 
 <ion-content>
-  <div class="header-title">Select the category for this transaction</div>
+  <div class="b-padding">
+    <div class="header-title">Select a category for this transaction</div>
 
-  <div class="cat-container">
-    <div class="button-cointainer">
-      <ion-button
-        >Edit
-        <ion-icon style="font-size: 25px" name="options-outline"></ion-icon
-      ></ion-button>
-    </div>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="4" *ngFor="let item of categorias | keyvalue:asIsOrder">
-          <div class="item">
-            <div class="cat-icon">
-              <ion-icon name="cart-outline"></ion-icon>
-            </div>
+    <div class="cat-container">
+      <div class="button-cointainer">
+        <ion-button (click)="goToCategoryManagment()"
+          >Edit
+          <ion-icon
+            style="font-size: 25px; margin-left: 3px"
+            name="options-outline"
+          ></ion-icon
+        ></ion-button>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            size="4"
+            *ngFor="let item of LocalManagmentService.categorias | keyvalue:asIsOrder"
+            style="margin-bottom: 5px"
+          >
             <div
-              class="cat-title"
-              [ngClass]="{'cat-pt-overflow': item.value.label.length > 10}"
+              class="item"
+              [class.item-active]="item.key === currentCategory.key"
+              (click)="selectCategory(item)"
             >
-              {{ item.value.label }}
+              <div class="cat-icon">
+                <ion-icon [name]="item.value.icon"></ion-icon>
+              </div>
+              <div
+                class="cat-title"
+                [ngClass]="{'cat-pt-overflow': item.value.label.length > 10}"
+              >
+                {{ item.value.label }}
+              </div>
             </div>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="subcategories">
+      <ion-select
+        interface="popover"
+        class="wider-popover"
+        placeholder="Select a subcategory"
+        [(ngModel)]="currentSubcategory"
+        (ionChange)="subcategoryChange()"
+        [class.selected-value]="currentSubcategory !== null"
+      >
+        <ion-select-option
+          *ngFor="let subc of currentCategory.value.subcategories"
+          value="{{ subc.label }}"
+          >{{ subc.label }}</ion-select-option
+        >
+      </ion-select>
+    </div>
+
+    <div class="continue-button">
+      <ion-button (click)="continue()">Continue</ion-button>
+    </div>
   </div>
 </ion-content>
