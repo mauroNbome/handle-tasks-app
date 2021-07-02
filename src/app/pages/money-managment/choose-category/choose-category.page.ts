@@ -60,7 +60,7 @@ export class ChooseCategoryPage implements OnInit {
   }
 
   goToCategoryManagment() {
-    this.router.navigate(['money-home', 'category-setup']);
+    this.router.navigate(['money-home', this.opt, 'category-setup']);
   }
 
   continue() {

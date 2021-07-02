@@ -1,3 +1,29 @@
 <app-header [title]="'Category Managment'"></app-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <div class="b-padding">
+    <div class="list-wrap">
+      <div
+        class="item"
+        *ngFor="let item of LocalManagmentService.categorias | keyvalue: asIsOrder"
+      >
+        <div class="icontainer">
+          <div class="icon">
+            <ion-icon [name]="item.value.icon"></ion-icon>
+          </div>
+        </div>
+        <div class="text-container">
+          <div class="title">{{ item.value.label }}</div>
+          <div class="subtitle">
+            {{ item.value.subcategories.length }} subcategories
+          </div>
+        </div>
+        <div class="kebab-container">
+          <div class="kebab">
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

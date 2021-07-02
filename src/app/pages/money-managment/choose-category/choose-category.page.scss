@@ -21,7 +21,16 @@
   margin-top: 2.5rem;
   .item {
     position: relative;
-    background-color: var(--ion-color-secondary-shade1);
+    // background-color: var(--ion-color-secondary-shade1);
+
+    background: rgb(26, 25, 30);
+    background: linear-gradient(
+      20deg,
+      rgba(26, 25, 30, 1) 3%,
+      rgba(35, 34, 39, 1) 55%,
+      rgba(48, 49, 53, 1) 90%,
+      rgba(61, 63, 67, 1) 99%
+    );
     height: 8rem;
     width: 90%;
     margin: 0 auto;
@@ -67,7 +76,11 @@
 }
 
 .item-active {
-  background-color: var(--ion-color-secondary-shade2) !important;
+  ion-icon {
+    color: #ada7cb !important;
+  }
+  border: 1px solid #acaab1;
+  // background-color: var(--ion-color-secondary-shade2) !important;
 }
 
 .cat-pt-overflow {
