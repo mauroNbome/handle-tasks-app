@@ -96,6 +96,13 @@ const routes: Routes = [
         './pages/money-managment/transaction-list/transaction-list.module'
       ).then((m) => m.TransactionListPageModule),
   },
+  {
+    path: 'money-home/:opt/category-setup-individual',
+    loadChildren: () =>
+      import(
+        './pages/money-managment/category-setup-individual-add/category-setup-individual-add.module'
+      ).then((m) => m.CategorySetupIndividualAddPageModule),
+  },
 ];
 
 @NgModule({

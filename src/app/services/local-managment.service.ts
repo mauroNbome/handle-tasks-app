@@ -5,6 +5,10 @@ import { ToastController } from '@ionic/angular';
   providedIn: 'root',
 })
 export class LocalManagmentService {
+  // Categoría para editar en la vista
+  // money-home/add-founds/category-setup-individual
+  currentCategoryToEdit: any;
+
   newTransaction = {
     id: '',
     amount: 0,

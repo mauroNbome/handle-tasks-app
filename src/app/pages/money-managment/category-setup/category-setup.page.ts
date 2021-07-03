@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalManagmentService } from '../../../services/local-managment.service';
 
 @Component({
@@ -9,10 +9,12 @@ import { LocalManagmentService } from '../../../services/local-managment.service
 })
 export class CategorySetupPage implements OnInit {
   opt: any;
+  search: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    public LocalManagmentService: LocalManagmentService
+    public LocalManagmentService: LocalManagmentService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -23,5 +25,17 @@ export class CategorySetupPage implements OnInit {
   // Este método ordena el objeto by its keys.
   asIsOrder(a, b) {
     return 1;
+  }
+
+  editCategory(item) {
+    this.LocalManagmentService.currentCategoryToEdit = item;
+    console.log(this.search);
+    return;
+    this.router.navigate(['money-home', this.opt, 'category-setup-individual']);
+  }
+
+  filterCategories(event) {
+    // TODO: Fix violation ion-searchbar
+    console.log(event);
   }
 }

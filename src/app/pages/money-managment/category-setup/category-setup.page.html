@@ -2,10 +2,16 @@
 
 <ion-content>
   <div class="b-padding">
+    <div class="search-container">
+      <ion-searchbar
+        (input)="filterCategories($event.target.value)"
+      ></ion-searchbar>
+    </div>
     <div class="list-wrap">
       <div
         class="item"
         *ngFor="let item of LocalManagmentService.categorias | keyvalue: asIsOrder"
+        (click)="editCategory(item)"
       >
         <div class="icontainer">
           <div class="icon">
@@ -20,7 +26,7 @@
         </div>
         <div class="kebab-container">
           <div class="kebab">
-            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+            <ion-icon name="pencil"></ion-icon>
           </div>
         </div>
       </div>
