@@ -11,6 +11,8 @@ export class CategorySetupPage implements OnInit {
   opt: any;
   search: any;
 
+  currentCategoriesOnView: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     public LocalManagmentService: LocalManagmentService,
@@ -18,24 +20,51 @@ export class CategorySetupPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.setupCategoryList();
+    this.LocalManagmentService.setupStoredData();
     this.opt = this.activatedRoute.snapshot.paramMap.get('opt');
-    console.log(this.opt);
   }
 
-  // Este método ordena el objeto by its keys.
-  asIsOrder(a, b) {
-    return 1;
+  ionViewWillEnter() {
+    this.setupCategoryList();
+    this.LocalManagmentService.setupStoredData();
+    this.opt = this.activatedRoute.snapshot.paramMap.get('opt');
   }
 
   editCategory(item) {
     this.LocalManagmentService.currentCategoryToEdit = item;
-    console.log(this.search);
-    return;
     this.router.navigate(['money-home', this.opt, 'category-setup-individual']);
   }
 
   filterCategories(event) {
-    // TODO: Fix violation ion-searchbar
-    console.log(event);
+    if (this.LocalManagmentService.newTransaction.type === 'add-spending') {
+      if (event === '') {
+        this.currentCategoriesOnView =
+          this.LocalManagmentService.spendingCategories;
+      } else {
+        this.currentCategoriesOnView = this.currentCategoriesOnView.filter(
+          (cat) => cat.label.toLowerCase().includes(event.toLowerCase())
+        );
+      }
+    } else {
+      if (event === '') {
+        this.currentCategoriesOnView =
+          this.LocalManagmentService.addFoundsCategories;
+      } else {
+        this.currentCategoriesOnView = this.currentCategoriesOnView.filter(
+          (cat) => cat.label.toLowerCase().includes(event.toLowerCase())
+        );
+      }
+    }
+  }
+
+  setupCategoryList() {
+    if (this.LocalManagmentService.newTransaction.type === 'add-founds') {
+      this.currentCategoriesOnView =
+        this.LocalManagmentService.addFoundsCategories;
+    } else {
+      this.currentCategoriesOnView =
+        this.LocalManagmentService.spendingCategories;
+    }
   }
 }

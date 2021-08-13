@@ -3,25 +3,27 @@
 <ion-content>
   <div class="b-padding">
     <div class="search-container">
-      <ion-searchbar
-        (input)="filterCategories($event.target.value)"
-      ></ion-searchbar>
+      <div class="icontainer">
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+      <ion-input (input)="filterCategories($event.target['value'])">
+      </ion-input>
     </div>
     <div class="list-wrap">
       <div
         class="item"
-        *ngFor="let item of LocalManagmentService.categorias | keyvalue: asIsOrder"
+        *ngFor="let item of currentCategoriesOnView"
         (click)="editCategory(item)"
       >
         <div class="icontainer">
           <div class="icon">
-            <ion-icon [name]="item.value.icon"></ion-icon>
+            <ion-icon [name]="item.icon"></ion-icon>
           </div>
         </div>
         <div class="text-container">
-          <div class="title">{{ item.value.label }}</div>
+          <div class="title">{{ item.label }}</div>
           <div class="subtitle">
-            {{ item.value.subcategories.length }} subcategories
+            {{ item.subcategories.length }} subcategories
           </div>
         </div>
         <div class="kebab-container">

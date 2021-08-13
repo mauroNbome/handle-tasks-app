@@ -92,6 +92,7 @@ export class AddTransactionPage implements OnInit {
       amount: 0,
       type: '',
       main_category: '',
+      icon: '',
       subcategory: '',
       concept: '',
       date: new Date(),

@@ -2,12 +2,24 @@
 
 <ion-content>
   <div class="b-padding">
+    <div class="cat-container">
+      <div class="icontainer">
+        <div class="icon">
+          <ion-icon name="shirt"></ion-icon>
+        </div>
+      </div>
+      <div class="text-container">
+        <div class="title">Ropa</div>
+        <div class="subtitle">Compra diaria</div>
+      </div>
+    </div>
+
     <div class="input-box">
       <div class="label">Amount</div>
       <div class="input-container">$ {{ amount }}</div>
     </div>
 
-    <div class="label" style="margin-top: 3rem">Concept</div>
+    <div class="label" style="margin-top: 3rem">Transaction concept</div>
 
     <div class="input-box">
       <ion-input
@@ -16,39 +28,6 @@
         placeholder="e.g. pago de cuota"
         style="font-weight: 18px"
       ></ion-input>
-    </div>
-
-    <div class="label" style="margin-top: 3rem">Category</div>
-    <div class="slider-wrapper">
-      <ion-slides [options]="slideOpts">
-        <ion-slide *ngFor="let cat of categorias | keyvalue:asIsOrder">
-          <div
-            class="slide-category"
-            (click)="changeCategory(cat)"
-            [class.active]="currentCategory.key === cat.key"
-          >
-            <div class="slide-text">{{ cat.value.label }}</div>
-          </div>
-        </ion-slide>
-      </ion-slides>
-    </div>
-
-    <div class="subcategory-container">
-      <div class="label" style="margin-top: 3rem">Subcategory</div>
-
-      <ion-grid>
-        <ion-row>
-          <ion-col size="4" *ngFor="let item of getSubcategories()">
-            <div
-              (click)="changeSubcategory(item.value)"
-              class="subcategory"
-              [class.active]="item.value === currentSubcategory"
-            >
-              <div class="text">{{ item.label }}</div>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
     </div>
 
     <div class="button-container">

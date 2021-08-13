@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalManagmentService } from '../../../services/local-managment.service';
 
 @Component({
   selector: 'app-money-home',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./money-home.page.scss'],
 })
 export class MoneyHomePage implements OnInit {
-
-  constructor() { }
+  transactionList: any;
+  constructor(private service: LocalManagmentService) {}
 
   ngOnInit() {
+    this.transactionList = this.service.getTransactions();
+    console.log(this.transactionList);
   }
-
 }

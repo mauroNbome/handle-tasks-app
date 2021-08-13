@@ -18,22 +18,22 @@
         <ion-row>
           <ion-col
             size="4"
-            *ngFor="let item of LocalManagmentService.categorias | keyvalue:asIsOrder"
+            *ngFor="let item of setupCategories()"
             style="margin-bottom: 5px"
           >
             <div
               class="item"
-              [class.item-active]="item.key === currentCategory.key"
+              [class.item-active]="item.id === currentCategory.id"
               (click)="selectCategory(item)"
             >
               <div class="cat-icon">
-                <ion-icon [name]="item.value.icon"></ion-icon>
+                <ion-icon [name]="item.icon"></ion-icon>
               </div>
               <div
                 class="cat-title"
-                [ngClass]="{'cat-pt-overflow': item.value.label.length > 10}"
+                [ngClass]="{'cat-pt-overflow': item.label.length > 9}"
               >
-                {{ item.value.label }}
+                {{ item.label }}
               </div>
             </div>
           </ion-col>
@@ -51,7 +51,7 @@
         [class.selected-value]="currentSubcategory !== null"
       >
         <ion-select-option
-          *ngFor="let subc of currentCategory.value.subcategories"
+          *ngFor="let subc of currentCategory.subcategories"
           value="{{ subc.label }}"
           >{{ subc.label }}</ion-select-option
         >

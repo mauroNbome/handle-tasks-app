@@ -21,24 +21,20 @@ export class ChooseCategoryPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.LocalManagmentService.setupStoredData();
     this.opt = this.activatedRoute.snapshot.paramMap.get('opt');
-    console.log(this.opt);
-    this.currentCategory = {
-      key: 'supermercado',
-      value: {
-        label: this.LocalManagmentService.categorias.comida.label,
-        subcategories:
-          this.LocalManagmentService.categorias.supermercado.subcategories,
-        icon: 'pizza',
-      },
-    };
-
-    console.log(this.currentCategory);
+    this.currentCategory = this.LocalManagmentService.spendingCategories[0];
   }
 
-  // Este método ordena el objeto by its keys.
-  asIsOrder(a, b) {
-    return 1;
+  ionViewWillEnter() {
+    this.LocalManagmentService.setupStoredData();
+    this.opt = this.activatedRoute.snapshot.paramMap.get('opt');
+    this.currentCategory = this.LocalManagmentService.spendingCategories[0];
+    this.LocalManagmentService.newTransaction.main_category =
+      this.currentCategory.label;
+    this.LocalManagmentService.newTransaction.icon = this.currentCategory.icon;
+
+    console.log(this.currentCategory);
   }
 
   selectCategory(item) {
@@ -51,7 +47,7 @@ export class ChooseCategoryPage implements OnInit {
 
     this.currentCategory = item;
 
-    this.LocalManagmentService.newTransaction.main_category = item.key;
+    this.LocalManagmentService.newTransaction.main_category = item.label;
   }
 
   subcategoryChange() {
@@ -63,7 +59,21 @@ export class ChooseCategoryPage implements OnInit {
     this.router.navigate(['money-home', this.opt, 'category-setup']);
   }
 
+  setupCategories() {
+    if (this.LocalManagmentService.newTransaction.type === 'add-founds') {
+      return this.LocalManagmentService.addFoundsCategories;
+    } else {
+      return this.LocalManagmentService.spendingCategories;
+    }
+  }
+
   continue() {
     console.log(this.LocalManagmentService.newTransaction);
+    this.router.navigate([
+      'money-home',
+      'add-transaction',
+      this.opt,
+      'transaction-data',
+    ]);
   }
 }

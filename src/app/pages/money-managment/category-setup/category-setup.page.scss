@@ -1,7 +1,4 @@
-.sc-ion-searchbar-md-h {
-  --box-shadow: none !important;
-  padding-top: 0px;
-  padding-bottom: 0px;
+ion-input {
   border: 1px solid var(--ion-color-secondary-gray-contrast);
   border-radius: 20px;
   background: transparent !important;
@@ -9,10 +6,32 @@
   color: var(--ion-color-secondary-gray-contrast) !important;
   font-weight: 500 !important;
   margin-bottom: 2rem;
+  height: 4.5rem;
+  width: 90% !important;
+  font-size: 16px;
+  --padding-start: 5rem;
 }
 
 .search-container {
   margin-bottom: 4rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  margin: 0 auto;
+
+  .icontainer {
+    position: absolute;
+    top: 17%;
+    left: 4%;
+    width: 3rem;
+
+    ion-icon {
+      width: 25px;
+      height: 25px;
+      color: var(--ion-color-secondary-gray-contrast);
+    }
+  }
 }
 
 .list-wrap {
