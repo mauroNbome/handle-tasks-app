@@ -252,6 +252,14 @@ export class LocalManagmentService {
     return JSON.parse(localStorage.getItem('transactions'));
   }
 
+  getBalanceFromLS() {
+    return localStorage.getItem('balance');
+  }
+
+  saveNewBalance(balance) {
+    localStorage.setItem('balance', balance);
+  }
+
   setupStoredData() {
     if (this.getSpendCategories()) {
       this.spendingCategories = this.getSpendCategories();

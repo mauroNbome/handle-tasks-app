@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalManagmentService } from '../../../services/local-managment.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-transaction-data',
@@ -14,7 +15,8 @@ export class TransactionDataPage implements OnInit {
   constructor(
     private activatedRouter: ActivatedRoute,
     private LocalManagmentService: LocalManagmentService,
-    private router: Router
+    private router: Router,
+    private NavController: NavController
   ) {}
 
   // Variable que almacena la categoría actual, lo utilizamos para setear las subcategories, y mostra estilo active.
@@ -22,6 +24,22 @@ export class TransactionDataPage implements OnInit {
   concept: any = '';
 
   ngOnInit() {
+    if (this.LocalManagmentService.newTransaction === null) {
+      this.NavController.back();
+      return;
+    }
+    this.opt = this.activatedRouter.snapshot.paramMap.get('opt');
+    this.amount = this.LocalManagmentService.newTransaction.amount;
+    console.log(this.opt);
+    console.log(this.amount);
+  }
+
+  ionViewWillEnter() {
+    if (this.LocalManagmentService.newTransaction === null) {
+      this.NavController.back();
+      return;
+    }
+
     this.opt = this.activatedRouter.snapshot.paramMap.get('opt');
     this.amount = this.LocalManagmentService.newTransaction.amount;
     console.log(this.opt);
@@ -38,11 +56,39 @@ export class TransactionDataPage implements OnInit {
       this.LocalManagmentService.newTransaction
     );
 
+    // Modifying LS balance.
+    let currentBalance = this.LocalManagmentService.getBalanceFromLS();
+    if (!currentBalance) {
+      if (this.LocalManagmentService.newTransaction.type === 'add-spending') {
+        this.LocalManagmentService.saveNewBalance(
+          `-${this.LocalManagmentService.newTransaction.amount}`
+        );
+      } else {
+        this.LocalManagmentService.saveNewBalance(
+          this.LocalManagmentService.newTransaction.amount
+        );
+      }
+    } else {
+      if (this.LocalManagmentService.newTransaction.type === 'add-spending') {
+        let result =
+          Number(currentBalance) -
+          Number(this.LocalManagmentService.newTransaction.amount);
+
+        this.LocalManagmentService.saveNewBalance(result);
+      } else {
+        let result =
+          Number(currentBalance) +
+          Number(this.LocalManagmentService.newTransaction.amount);
+
+        this.LocalManagmentService.saveNewBalance(result);
+      }
+    }
+
     // Setting variable to null.
     this.LocalManagmentService.newTransaction = null;
 
     // Going back.
-    this.router.navigate(['money-home']);
+    this.NavController.back();
   }
 
   // Formating $$

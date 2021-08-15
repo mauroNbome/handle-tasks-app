@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalManagmentService } from '../../../services/local-managment.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-transaction',
@@ -16,12 +17,25 @@ export class AddTransactionPage implements OnInit {
   constructor(
     private activatedRouter: ActivatedRoute,
     private router: Router,
-    public LocalManagmentService: LocalManagmentService
+    public LocalManagmentService: LocalManagmentService,
+    private NavController: NavController
   ) {
     this.opt = this.activatedRouter.snapshot.paramMap.get('opt');
   }
 
   ngOnInit() {
+    if (this.LocalManagmentService.newTransaction === null) {
+      this.NavController.back();
+      return;
+    }
+    this.balance = 0;
+  }
+
+  ionViewWillEnter() {
+    if (this.LocalManagmentService.newTransaction === null) {
+      this.NavController.back();
+      return;
+    }
     this.balance = 0;
   }
 
