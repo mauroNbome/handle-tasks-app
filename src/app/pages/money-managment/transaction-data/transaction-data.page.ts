@@ -14,7 +14,7 @@ export class TransactionDataPage implements OnInit {
 
   constructor(
     private activatedRouter: ActivatedRoute,
-    private LocalManagmentService: LocalManagmentService,
+    public service: LocalManagmentService,
     private router: Router,
     private NavController: NavController
   ) {}
@@ -24,68 +24,56 @@ export class TransactionDataPage implements OnInit {
   concept: any = '';
 
   ngOnInit() {
-    if (this.LocalManagmentService.newTransaction === null) {
+    if (this.service.newTransaction === null) {
       this.NavController.back();
       return;
     }
     this.opt = this.activatedRouter.snapshot.paramMap.get('opt');
-    this.amount = this.LocalManagmentService.newTransaction.amount;
-    console.log(this.opt);
-    console.log(this.amount);
+    this.amount = this.service.newTransaction.amount;
   }
 
   ionViewWillEnter() {
-    if (this.LocalManagmentService.newTransaction === null) {
+    if (this.service.newTransaction === null) {
       this.NavController.back();
       return;
     }
 
     this.opt = this.activatedRouter.snapshot.paramMap.get('opt');
-    this.amount = this.LocalManagmentService.newTransaction.amount;
-    console.log(this.opt);
-    console.log(this.amount);
+    this.amount = this.service.newTransaction.amount;
   }
 
   saveData() {
-    this.LocalManagmentService.newTransaction.concept = this.concept;
+    this.service.newTransaction.concept = this.concept;
 
-    console.log(this.LocalManagmentService.newTransaction);
+    console.log(this.service.newTransaction);
     // Saving to LS.
 
-    this.LocalManagmentService.saveTransactionList(
-      this.LocalManagmentService.newTransaction
-    );
+    this.service.saveTransactionList(this.service.newTransaction);
 
     // Modifying LS balance.
-    let currentBalance = this.LocalManagmentService.getBalanceFromLS();
+    let currentBalance = this.service.getBalanceFromLS();
     if (!currentBalance) {
-      if (this.LocalManagmentService.newTransaction.type === 'add-spending') {
-        this.LocalManagmentService.saveNewBalance(
-          `-${this.LocalManagmentService.newTransaction.amount}`
-        );
+      if (this.service.newTransaction.type === 'add-spending') {
+        this.service.saveNewBalance(`-${this.service.newTransaction.amount}`);
       } else {
-        this.LocalManagmentService.saveNewBalance(
-          this.LocalManagmentService.newTransaction.amount
-        );
+        this.service.saveNewBalance(this.service.newTransaction.amount);
       }
     } else {
-      if (this.LocalManagmentService.newTransaction.type === 'add-spending') {
+      if (this.service.newTransaction.type === 'add-spending') {
         let result =
-          Number(currentBalance) -
-          Number(this.LocalManagmentService.newTransaction.amount);
+          Number(currentBalance) - Number(this.service.newTransaction.amount);
 
-        this.LocalManagmentService.saveNewBalance(result);
+        this.service.saveNewBalance(result);
       } else {
         let result =
-          Number(currentBalance) +
-          Number(this.LocalManagmentService.newTransaction.amount);
+          Number(currentBalance) + Number(this.service.newTransaction.amount);
 
-        this.LocalManagmentService.saveNewBalance(result);
+        this.service.saveNewBalance(result);
       }
     }
 
     // Setting variable to null.
-    this.LocalManagmentService.newTransaction = null;
+    this.service.newTransaction = null;
 
     // Going back.
     this.NavController.back();

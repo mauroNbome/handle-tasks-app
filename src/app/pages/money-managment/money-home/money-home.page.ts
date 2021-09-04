@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalManagmentService } from '../../../services/local-managment.service';
 import { Router } from '@angular/router';
+import { transactionModel } from '../../../models/transaction.model';
 
 @Component({
   selector: 'app-money-home',
@@ -91,14 +92,15 @@ export class MoneyHomePage implements OnInit {
     }`;
   }
 
-  numberWithCommas(x): string {
-    if (!x) {
-      return '0';
-    }
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  }
-
   startTransaction(transactionType) {
+    // Validating if it's the first transaction, don't make spending type.
+    if (this.currentBalance === '0' && transactionType === 'add-spending') {
+      this.service.presentToastError(
+        'You need to add founds before add spendings!'
+      );
+      return;
+    }
+
     this.service.newTransaction = {
       id: '',
       amount: 0,
@@ -109,6 +111,7 @@ export class MoneyHomePage implements OnInit {
       concept: '',
       date: new Date(),
     };
+
     this.router.navigate(['money-home', 'add-transaction', transactionType]);
   }
 }

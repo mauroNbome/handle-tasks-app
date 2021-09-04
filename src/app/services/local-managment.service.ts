@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { transactionModel } from '../models/transaction.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class LocalManagmentService {
   // money-home/add-founds/category-setup-individual
   currentCategoryToEdit: any;
 
-  newTransaction = {
+  newTransaction: transactionModel = {
     id: '',
     amount: 0,
     type: '',
@@ -252,8 +253,20 @@ export class LocalManagmentService {
     return JSON.parse(localStorage.getItem('transactions'));
   }
 
+  // Returning formated balance (removing aditional values after dot.)
   getBalanceFromLS() {
-    return localStorage.getItem('balance');
+    let formatedBalance: any;
+    let balance = localStorage.getItem('balance');
+    if (balance) {
+      formatedBalance = balance.split('.');
+
+      if (formatedBalance.length > 1) {
+        formatedBalance[1] = formatedBalance[1].slice(0, 2);
+        return formatedBalance.join('.');
+      } else {
+        return balance;
+      }
+    } else return '0';
   }
 
   saveNewBalance(balance) {
